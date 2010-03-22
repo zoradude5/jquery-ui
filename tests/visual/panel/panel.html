@@ -11,7 +11,25 @@
 	<script type="text/javascript" src="../../../ui/jquery.ui.panel.js"></script>
 	<script type="text/javascript">
 	$(function() {
-		$("#panel1").panel();
+		var panel = $("#panel1").panel();
+		
+		$("#icons").toggle(function() {
+			panel.panel("option", "icons", false);
+		}, function() {
+			panel.panel("option", "icons", $.ui.panel.prototype.options.icons);
+		});
+
+		$("#disable").toggle(function() {
+			panel.panel("disable");
+		}, function() {
+			panel.panel("enable");
+		});
+
+		$("#destroy").toggle(function() {
+			panel.panel("destroy");
+		}, function() {
+			panel.panel();
+		});
 	})
 	</script>
 </head>
@@ -31,6 +49,10 @@
 		Panel Content 3
 	</div>
 </div>
+
+<button id="icons">Icons</button>
+<button id="disable">Disable</button>
+<button id="destroy">Destroy</button>
 
 </body>
 </html>
