@@ -51,6 +51,22 @@ $.widget("ui.panel", {
 				.hide();
 	},
 	
+	destroy: function() {
+		$.Widget.prototype.destroy.apply(this, arguments);
+		this.element
+			.removeClass("ui-panel ui-widget ui-helper-reset")
+			.removeAttr("role");
+
+		this.headers
+			.unbind(".panel")
+			.removeClass("ui-panel-header ui-helper-reset ui-state-default ui-corner-all ui-state-active ui-corner-top")
+			.removeAttr("role").removeAttr("aria-expanded").removeAttr("tabindex");
+
+		this.headers.find("a").removeAttr("tabindex");
+		this._destroyIcons();
+		var contents = this.headers.next().css("display", "").removeAttr("role").removeClass("ui-helper-reset ui-widget-content ui-corner-bottom ui-panel-content ui-panel-content-active");
+	},
+	
 	_setOption: function(key, value) {
 		$.Widget.prototype._setOption.apply(this, arguments);
 			
