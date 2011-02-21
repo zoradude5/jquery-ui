@@ -39,7 +39,7 @@ function addLogging(suite, done) {
 	};
 	
 	QUnit.done = function(result){
-		console.log(suite + ": Took " + result.runtime +  "ms to run " + result.total + " tests. ✔ " + result.passed + " \u001B[31m✖ " + result.failed + "\u001B[39m ");
+		console.log(suite + ": Took " + result.runtime +  "ms to run " + result.total + " tests. \u001B[32m✔ " + result.passed + "\u001B[39m \u001B[31m✖ " + result.failed + "\u001B[39m ");
 		done(result.failed > 0 ? 1 : 0);
 	};
 }
